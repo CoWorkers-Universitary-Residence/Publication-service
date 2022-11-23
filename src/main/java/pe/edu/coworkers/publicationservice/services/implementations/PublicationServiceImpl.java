@@ -31,8 +31,8 @@ public class PublicationServiceImpl implements PublicationService {
     }
 
     @Override
-    public Publication getByOwnerId(Long id) {
-        return publicationRepository.findByOwnerId(id);
+    public List<Publication> getByOwnerId(Long id) {
+        return publicationRepository.findAllByOwnerId(id);
     }
 
     @Override

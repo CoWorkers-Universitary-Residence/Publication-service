@@ -35,18 +35,19 @@ public class PublicationController {
         return ResponseEntity.ok(publications);
     }
 
+    @GetMapping(value = "/owner/{ownerId}")
+    public ResponseEntity<List<Publication>> getPublicationByOwnerId(@PathVariable("ownerId") Long id){
+        List<Publication> publications;
+        publications = publicationService.getByOwnerId(id);
+        if (publications.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(publications);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Publication> getPublication(@PathVariable("id") Long id){
         Publication publication = publicationService.getById(id);
-        if (publication == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(publication);
-    }
-
-    @GetMapping(value = "/owner/{ownerId}")
-    public ResponseEntity<Publication> getPublicationByOwnerId(@PathVariable("ownerId") Long id){
-        Publication publication = publicationService.getByOwnerId(id);
         if (publication == null){
             return ResponseEntity.notFound().build();
         }
