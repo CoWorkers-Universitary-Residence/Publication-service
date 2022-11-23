@@ -1,6 +1,7 @@
 package pe.edu.coworkers.publicationservice.entities;
 
 import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
 import lombok.*;
 
 import javax.persistence.*;
@@ -68,4 +69,8 @@ public class Publication {
 
     @NotNull
     private int reviews;
+
+    //
+    @Nullable
+    private String photo;
 }
