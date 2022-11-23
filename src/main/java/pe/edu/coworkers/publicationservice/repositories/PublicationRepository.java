@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pe.edu.coworkers.publicationservice.entities.Publication;
 
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
-
+    Publication findByOwnerId(Long ownerId);
 
 }

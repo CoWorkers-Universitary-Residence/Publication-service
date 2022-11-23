@@ -44,6 +44,15 @@ public class PublicationController {
         return ResponseEntity.ok(publication);
     }
 
+    @GetMapping(value = "/owner/{ownerId}")
+    public ResponseEntity<Publication> getPublicationByOwnerId(@PathVariable("ownerId") Long id){
+        Publication publication = publicationService.getByOwnerId(id);
+        if (publication == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(publication);
+    }
+
     @PostMapping
     public ResponseEntity<Publication> createPublication(@RequestBody Publication publication){
         Publication publicationCreate = publicationService.create(publication);

@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface PublicationService {
     List<Publication> getAll();
     Publication getById(Long id);
+    Publication getByOwnerId(Long id);
     Publication create(Publication publication);
     Publication update(Publication publication);
     Optional<ResponseEntity<?>> delete(Long publicationId);
