@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pe.edu.coworkers.publicationservice.entities.Detail;
 import pe.edu.coworkers.publicationservice.entities.Publication;
 import pe.edu.coworkers.publicationservice.repositories.DetailRepository;
+import pe.edu.coworkers.publicationservice.repositories.PublicationRepository;
 import pe.edu.coworkers.publicationservice.services.DetailService;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.Optional;
 public class DetailServiceImpl implements DetailService {
     @Autowired
     private DetailRepository detailRepository;
+
+    @Autowired
+    private PublicationRepository publicationRepository;
 
     @Override
     public List<Detail> getAll() {
@@ -27,7 +31,12 @@ public class DetailServiceImpl implements DetailService {
     }
 
     @Override
-    public Detail create(Detail detail) {
+    public Detail create(Detail detail, Long publicationId) {
+
+        Publication publication = publicationRepository.getById(publicationId);
+
+        detail.setPublication(publication);
+
         return detailRepository.save(detail);
     }
 
@@ -52,7 +61,7 @@ public class DetailServiceImpl implements DetailService {
     }
 
     @Override
-    public List<Detail> findByPublication(Publication publication) {
-        return detailRepository.findByPublication(publication);
+    public List<Detail> findByPublicationId(Long publicationId) {
+        return detailRepository.findByPublicationId(publicationId);
     }
 }

@@ -26,7 +26,7 @@ public class DetailController {
     @Autowired
     private DetailService detailService;
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<Detail>> getDetails(@RequestParam(name = "publicationId", required = false) Long publicationId){
         List<Detail> details;
         if (null == publicationId){
@@ -42,7 +42,7 @@ public class DetailController {
         }
 
         return ResponseEntity.ok(details);
-    }
+    }*/
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Detail> getDetail(@PathVariable("id") Long id){
@@ -53,11 +53,11 @@ public class DetailController {
         return ResponseEntity.ok(detail);
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Detail> createDetail(@RequestBody Detail detail){
         Detail detailCreate = detailService.create(detail);
         return ResponseEntity.status(HttpStatus.CREATED).body(detailCreate);
-    }
+    }*/
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Detail> updateDetail(@PathVariable("id") Long id, @RequestBody Detail detail){

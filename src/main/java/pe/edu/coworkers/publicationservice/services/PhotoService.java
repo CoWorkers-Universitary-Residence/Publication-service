@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface PhotoService {
     List<Photo> getAll();
     Photo getById(Long id);
-    Photo create(Photo photo);
+    Photo create(Photo photo, Long publicationId);
     Photo update(Photo photo);
     Optional<ResponseEntity<?>> delete(Long photoId);
-    List<Photo> findByPublication(Publication publication);
+    List<Photo> findByPublicationId(Long publicationId);
 }

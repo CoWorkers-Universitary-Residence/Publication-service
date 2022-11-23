@@ -27,7 +27,7 @@ public class PhotoController {
     @Autowired
     private PhotoService photoService;
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<Photo>> getPhotos(@RequestParam(name = "publicationId", required = false) Long publicationId){
         List<Photo> photos;
         if (null == publicationId){
@@ -43,7 +43,7 @@ public class PhotoController {
         }
 
         return ResponseEntity.ok(photos);
-    }
+    }*/
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Photo> getPhoto(@PathVariable("id") Long id){
@@ -54,11 +54,11 @@ public class PhotoController {
         return ResponseEntity.ok(photo);
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Photo> createPhoto(@RequestBody Photo photo){
         Photo photoCreate = photoService.create(photo);
         return ResponseEntity.status(HttpStatus.CREATED).body(photoCreate);
-    }
+    }*/
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Photo> updatePhoto(@PathVariable("id") Long id, @RequestBody Photo photo){

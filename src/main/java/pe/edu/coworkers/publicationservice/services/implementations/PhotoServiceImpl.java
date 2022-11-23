@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pe.edu.coworkers.publicationservice.entities.Photo;
 import pe.edu.coworkers.publicationservice.entities.Publication;
 import pe.edu.coworkers.publicationservice.repositories.PhotoRepository;
+import pe.edu.coworkers.publicationservice.repositories.PublicationRepository;
 import pe.edu.coworkers.publicationservice.services.PhotoService;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Autowired
     private PhotoRepository photoRepository;
+    @Autowired
+    private PublicationRepository publicationRepository;
 
     @Override
     public List<Photo> getAll() {
@@ -28,7 +31,11 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Photo create(Photo photo) {
+    public Photo create(Photo photo, Long publicationId) {
+        Publication publication = publicationRepository.getById(publicationId);
+
+        photo.setPublication(publication);
+
         return photoRepository.save(photo);
     }
 
@@ -53,7 +60,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public List<Photo> findByPublication(Publication publication) {
-        return photoRepository.findByPublication(publication);
+    public List<Photo> findByPublicationId(Long publicationId) {
+        return photoRepository.findByPublicationId(publicationId);
     }
 }

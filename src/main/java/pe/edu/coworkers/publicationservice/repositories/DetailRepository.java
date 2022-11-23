@@ -7,5 +7,5 @@ import pe.edu.coworkers.publicationservice.entities.Publication;
 import java.util.List;
 
 public interface DetailRepository extends JpaRepository<Detail, Long> {
-    List<Detail> findByPublication(Publication publication);
+    List<Detail> findByPublicationId(Long publicationId);
 }

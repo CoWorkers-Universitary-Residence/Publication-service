@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface DetailService {
     List<Detail> getAll();
     Detail getById(Long id);
-    Detail create(Detail detail);
+    Detail create(Detail detail, Long publicationId);
     Detail update(Detail detail);
     Optional<ResponseEntity<?>> delete(Long detailId);
-    List<Detail> findByPublication(Publication publication);
+    List<Detail> findByPublicationId(Long publicationId);
 }
